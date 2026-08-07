@@ -15,7 +15,7 @@ to produce the paper's evaluation.
 
 ## Architecture
 
-![AgentVC closed-loop multi-agent orchestration framework](docs/architecture.png)
+![AgentVC closed-loop multi-agent orchestration framework](architecture.png)
 
 **Closed-loop Agentic AI ReAct orchestration.** Offloaded user tasks are pulled from the
 queue and paired with dynamically updated vehicle-residency information (**1–2**). Each
