@@ -1,0 +1,56 @@
+================================================================================
+VLSID AGENTIC VEHICULAR CLOUD SYSTEM - DEPENDENCIES & INSTALLATION GUIDE
+================================================================================
+
+# Target OS: Ubuntu 20.04 / 22.04 / 24.04 LTS (with NVIDIA GPU support)
+# Target Environment: Anaconda / Miniconda (Python 3.10)
+# Target LLM Engine: Ollama with Llama 3.1 (8B / 7B parameters)
+
+--------------------------------------------------------------------------------
+1. PYTHON DEPENDENCIES (library.txt)
+--------------------------------------------------------------------------------
+# Standard Data Science & Numeric Libraries
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+
+# API & LLM Communication
+requests>=2.31.0
+urllib3>=2.0.0
+pydantic>=2.0.0
+
+# Progress Tracking & System Utilities
+tqdm>=4.65.0
+dataclasses-json>=0.5.9
+
+--------------------------------------------------------------------------------
+2. UBUNTU SYSTEM & CONDA INSTALLATION STEPS
+--------------------------------------------------------------------------------
+
+### STEP 1: Install Miniconda / Anaconda (if not already installed)
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+bash miniconda.sh -b -p $HOME/miniconda
+source $HOME/miniconda/bin/activate
+
+### STEP 2: Create and Activate Conda Environment
+conda create -n vlsid_env python=3.10 -y
+conda activate vlsid_env
+
+### STEP 3: Install Required Python Packages inside Conda Environment
+pip install --upgrade pip
+pip install numpy pandas matplotlib requests pydantic tqdm dataclasses-json
+
+### STEP 4: Install and Start Ollama Engine on Ubuntu GPU
+curl -fsSL https://ollama.com/install.sh | sh
+
+# Start Ollama service in the background
+ollama serve &
+
+# Pull Llama 3.1 8B Model onto GPU memory
+ollama pull llama3.1
+
+### STEP 5: Run the Benchmark Suite
+cd vlsid_ollama_deployment
+python -m simulator_python.runner_ollama
+
+================================================================================
